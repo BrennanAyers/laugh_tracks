@@ -7,11 +7,15 @@ RSpec.describe 'teams index page', type: :feature do
 
     visit "/teams"
 
-    expect(page).to have_content(team_1.name)
-    expect(page).to have_content("Age: #{team_1.age}")
-    expect(page).to have_content("Location: #{team_1.location}")
-    expect(page).to have_content(team_2.name)
-    expect(page).to have_content("Age: #{team_2.age}")
-    expect(page).to have_content("Location: #{team_2.location}")
+    within "#team_#{team_1.id}" do
+      expect(page).to have_content(team_1.name)
+      expect(page).to have_content("Age: #{team_1.age}")
+      expect(page).to have_content("Location: #{team_1.location}")
+    end
+    within "#team_#{team_2.id}" do
+      expect(page).to have_content(team_2.name)
+      expect(page).to have_content("Age: #{team_2.age}")
+      expect(page).to have_content("Location: #{team_2.location}")
+    end
   end
 end
