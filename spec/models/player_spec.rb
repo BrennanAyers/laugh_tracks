@@ -8,6 +8,6 @@ RSpec.describe Player, type: :model do
   end
 
   describe "associations" do
-    it {should have_one :team}
+    it {should belong_to :team}
   end
 end
