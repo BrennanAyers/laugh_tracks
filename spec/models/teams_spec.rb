@@ -6,4 +6,8 @@ RSpec.describe Team, type: :model do
     it {should validate_presence_of :age}
     it {should validate_presence_of :location}
   end
+
+  describe "associations" do
+    it {should have_many :players}
+  end
 end
