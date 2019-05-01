@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Team, type: :model do
   it 'is valid with valid attributes' do
-    expect(Team.new).to be_valid
+    expect(Team.new(name: 'DotA')).to be_valid
   end
 
   it 'is not valid without a name' do
