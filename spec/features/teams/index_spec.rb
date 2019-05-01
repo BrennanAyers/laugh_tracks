@@ -25,13 +25,13 @@ RSpec.describe 'teams index page', type: :feature do
   end
 
   it 'user can see all players' do
-    within "team_#{@team_1.id}" do
-      expect page.to have_content "Name: #{@puppey.name}"
-      expect page.to have_content "Winrate: #{@puppey.winrate}"
+    within "#team_#{@team_1.id}" do
+      expect(page).to have_content "Name: #{@puppey.name}"
+      expect(page).to have_content "Winrate: #{@puppey.winrate}"
     end
-    within "team_#{@team_1.id}" do
-      expect page.to have_content "Name: #{@chu.name}"
-      expect page.to have_content "Winrate: #{@chu.winrate}"
+    within "#team_#{@team_2.id}" do
+      expect(page).to have_content "Name: #{@chu.name}"
+      expect(page).to have_content "Winrate: #{@chu.winrate}"
     end
   end
 end
