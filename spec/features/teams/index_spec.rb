@@ -38,9 +38,11 @@ RSpec.describe 'teams index page', type: :feature do
   it 'user can see team images' do
     within "#team_#{@team_1.id}" do
       expect(page).to have_css("img[src*='team_logos/1838315.png']")
+      expect(page).to have_css("img[alt='#{@team_1.name} Logo']")
     end
     within "#team_#{@team_2.id}" do
       expect(page).to have_css("img[src*='team_logos/36.png']")
+      expect(page).to have_css("img[alt='#{@team_2.name} Logo']")
     end
   end
 end
