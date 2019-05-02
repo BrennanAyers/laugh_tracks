@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'teams index page', type: :feature do
   before :each do
-    @team_1 = Team.create(name: "Secret", age: 4, location: "Europe")
-    @team_2 = Team.create(name: "Natus Vincere", age: 8, location: "Ukraine")
+    @team_1 = Team.create(name: "Secret", age: 4, location: "Europe", image: "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/1838315.png")
+    @team_2 = Team.create(name: "Natus Vincere", age: 8, location: "Ukraine", image: "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/36.png")
 
     @puppey = @team_1.players.create(name: "Puppey", winrate: 0.666)
     @chu = @team_2.players.create(name: "Chu", winrate: 0.521)
@@ -32,6 +32,15 @@ RSpec.describe 'teams index page', type: :feature do
     within "#team_#{@team_2.id}" do
       expect(page).to have_content "Name: #{@chu.name}"
       expect(page).to have_content "Winrate: #{@chu.winrate}"
+    end
+  end
+
+  it 'user can see team images' do
+    within "#team_#{@team_1.id}" do
+      expect(page).to have_css("img[src*='team_logos/1838315.png']")
+    end
+    within "#team_#{@team_2.id}" do
+      expect(page).to have_css("img[src*='team_logos/36.png']")
     end
   end
 end
