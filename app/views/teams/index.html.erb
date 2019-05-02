@@ -5,5 +5,11 @@
     <h2><%= team.name %></h2>
     <p>Age: <%= team.age %></p>
     <p>Location: <%= team.location %></p>
+    <% team.players.each do |player| %>
+    <aside class="player" id="player_<%= player.id %>">
+      <p>Name: <%= player.name %></p>
+      <p>Winrate: <%= player.winrate %></p>
+    </aside>
+    <% end %>
   </section>
 <% end %>
