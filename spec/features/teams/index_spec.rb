@@ -55,5 +55,20 @@ RSpec.describe 'teams index page', type: :feature do
       expect(page).to have_css("img[src*='7c590378e43123beebb838e2987eb6773febe1a6_full.jpg']")
       expect(page).to have_css("img[alt='#{@chu.name} Photo']")
     end
+
+    it 'displays the default image when absent' do
+      team = Team.create(name: "Placeholder", age: 1, location: "Placeholder")
+      player = team.players.create(name: "Placeholder", winrate: 0.5)
+
+      within "#team_#{team.id}" do
+        expect(page).to have_css("img[src*='default']")
+        expect(page).to have_css("img[alt='#{team.name} Logo']")
+      end
+
+      within "#player_#{player.id}" do
+        expect(page).to have_css("img[src*='default']")
+        expect(page).to have_css("img[alt='#{player.name} Photo']")
+      end
+    end
   end
 end
