@@ -5,8 +5,8 @@ RSpec.describe 'teams index page', type: :feature do
     @team_1 = Team.create(name: "Secret", age: 4, location: "Europe", image: "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/1838315.png")
     @team_2 = Team.create(name: "Natus Vincere", age: 8, location: "Ukraine", image: "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/36.png")
 
-    @puppey = @team_1.players.create(name: "Puppey", winrate: 0.666)
-    @chu = @team_2.players.create(name: "Chu", winrate: 0.521)
+    @puppey = @team_1.players.create(name: "Puppey", winrate: 0.666, image: "https://www.opendota.com/assets/images/dota2/players/87278757.png")
+    @chu = @team_2.players.create(name: "Chu", winrate: 0.521, image: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7c/7c590378e43123beebb838e2987eb6773febe1a6_full.jpg")
 
     visit "/teams"
   end
@@ -43,6 +43,17 @@ RSpec.describe 'teams index page', type: :feature do
     within "#team_#{@team_2.id}" do
       expect(page).to have_css("img[src*='team_logos/36.png']")
       expect(page).to have_css("img[alt='#{@team_2.name} Logo']")
+    end
+  end
+
+  it 'user can see player images' do
+    within "#player_#{@puppey.id}" do
+      expect(page).to have_css("img[src*='players/87278757.png']")
+      expect(page).to have_css("img[alt='#{@puppey.name} Photo']")
+    end
+    within "#player_#{@chu.id}" do
+      expect(page).to have_css("img[src*='7c590378e43123beebb838e2987eb6773febe1a6_full.jpg']")
+      expect(page).to have_css("img[alt='#{@chu.name} Photo']")
     end
   end
 end
