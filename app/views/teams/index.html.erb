@@ -8,6 +8,7 @@
     <p>Location: <%= team.location %></p>
     <% team.players.each do |player| %>
     <aside class="player" id="player_<%= player.id %>">
+      <img src="<%= player.image %>" alt="<%= player.name %> Photo">
       <p>Name: <%= player.name %></p>
       <p>Winrate: <%= player.winrate %></p>
     </aside>
