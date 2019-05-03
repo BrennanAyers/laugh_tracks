@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190501225425) do
+ActiveRecord::Schema.define(version: 20190502200201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20190501225425) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
+    t.string "image", default: "/assets/default.png"
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20190501225425) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image", default: "/assets/default.png"
   end
 
   add_foreign_key "players", "teams"
