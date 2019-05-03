@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20190502200201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
-    t.string "image"
+    t.string "image", default: "/assets/default.png"
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20190502200201) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.string "image", default: "/assets/default.png"
   end
 
   add_foreign_key "players", "teams"
