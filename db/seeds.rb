@@ -17,5 +17,5 @@ secret.players.create!(name: "Nisha", winrate: 0.758, image: "https://steamcdn-a
 navi.players.create!(name: "Chu", winrate: 0.521, image: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7c/7c590378e43123beebb838e2987eb6773febe1a6_full.jpg")
 navi.players.create!(name: "SoNNeikO", winrate: 0.517, image: "https://www.opendota.com/assets/images/dota2/players/117421467.png")
 navi.players.create!(name: "Crystallize", winrate: 0.506, image: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/30/30e0a06d7dd24bb7ee8d79eb7ca212079c48273d_full.jpg")
-navi.players.create!(name: "Blizzy", winrate: 0.524, image: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fb/fb9c36c36e54b8ca5f2e1cbd89c06574d1348af0_full.jpg")
+navi.players.create!(name: "Blizzy", winrate: 0.524)
 navi.players.create!(name: "MagicaL", winrate: 0.522, image: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b0/b06d64c8e6a235d70b0c78f5112cd18156f16b96_full.jpg")
