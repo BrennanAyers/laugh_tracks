@@ -19,7 +19,7 @@
 
 <% @teams.each do |team| %>
   <section class="team" id="team_<%= team.id %>">
-    <h2><%= team.name %></h2>
+    <h2><a href="/teams/<%= team.id %>"><%= team.name %></a></h2>
     <img src="<%= team.image %>" alt="<%= team.name %> Logo">
     <p>Age: <%= team.age %></p>
     <p>Location: <%= team.location %></p>
