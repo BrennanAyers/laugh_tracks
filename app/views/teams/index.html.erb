@@ -7,6 +7,15 @@
   <%= text_field_tag(:age) %>
   <%= submit_tag("Search", name: nil) %>
 <% end %>
+<% if @teams.empty? %>
+  <p>Sorry, nothing for you here!</p>
+<% else %>
+  <section id="team_stats">
+    <h2>Statistics:</h2>
+    <p>Average Age: <%= @average_age.round(2) %></p>
+    <p>All Team Locations: <%= @team_locations.join(', ') %></p>
+  </section>
+<% end %>
 
 <% @teams.each do |team| %>
   <section class="team" id="team_<%= team.id %>">

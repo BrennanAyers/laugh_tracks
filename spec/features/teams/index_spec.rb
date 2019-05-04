@@ -108,4 +108,28 @@ RSpec.describe 'teams index page', type: :feature do
 
     expect(current_path).to eq("/teams/new")
   end
+
+  it 'displays the statistics of the teams' do
+    expect(page).to have_content("Statistics:")
+    expect(page).to have_content("Average Age: #{(@team_1.age + @team_2.age) / 2}")
+    expect(page).to have_content("All Team Locations: #{@team_2.location}, #{@team_1.location}")
+  end
+
+  it 'displays filtered teams statistics correctly' do
+    visit '/teams?age=4'
+
+    expect(page).to have_content("Statistics:")
+    expect(page).to have_content("Average Age: #{@team_1.age}")
+    expect(page).to have_content("All Team Locations: #{@team_1.location}")
+  end
+
+  it 'displays nothing when filtered for no teams' do
+    visit '/teams?age=2'
+
+    expect(page).to_not have_content("Statistics:")
+    expect(page).to_not have_content("Average Age: #{(@team_1.age + @team_2.age) / 2}")
+    expect(page).to_not have_content("All Team Locations: #{@team_2.location}, #{@team_1.location}")
+
+    expect(page).to have_content("Sorry, nothing for you here!")
+  end
 end
