@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
   end
 
   def new
+    @new_team = Team.new
   end
 
   def create
