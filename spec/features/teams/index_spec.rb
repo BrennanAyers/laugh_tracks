@@ -90,14 +90,16 @@ RSpec.describe 'teams index page', type: :feature do
   end
 
   it 'displays the count of players on each team' do
-    team = Team.create(name: "Placeholder", age: 1, location: "Placeholder")
-    player = team.players.create(name: "Placeholder", winrate: 0.5)
+    player1 = @team_1.players.create(name: "Placeholder 1", winrate: 0.5)
+    player2 = @team_1.players.create(name: "Placeholder 2", winrate: 0.5)
 
+    visit "/teams"
+    
     within "#team_#{@team_1.id}" do
-      expect(page).to have_content("Player Count: 5")
+      expect(page).to have_content("Player Count: #{@team_1.player_count}")
     end
-    within "#team_#{team.id}" do
-      expect(page).to have_content("Player Count: 1")
+    within "#team_#{@team_2.id}" do
+      expect(page).to have_content("Player Count: #{@team_2.player_count}")
     end
   end
 end
