@@ -1,5 +1,9 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    if params.include?(:age)
+      @teams = Team.by_age(params[:age])
+    else
+      @teams = Team.all
+    end
   end
 end
