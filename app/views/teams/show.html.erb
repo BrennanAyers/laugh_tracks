@@ -1,0 +1,14 @@
+<section class="@team" id="@team_<%= @team.id %>">
+  <h2><%= @team.name %></h2>
+  <img src="<%= @team.image %>" alt="<%= @team.name %> Logo">
+  <p>Age: <%= @team.age %></p>
+  <p>Location: <%= @team.location %></p>
+  <p>Player Count: <%= @team.player_count %></p>
+  <% @team.players.each do |player| %>
+  <aside class="player" id="player_<%= player.id %>">
+    <img src="<%= player.image %>" alt="<%= player.name %> Photo">
+    <p>Name: <%= player.name %></p>
+    <p>Winrate: <%= player.winrate %></p>
+  </aside>
+  <% end %>
+</section>
