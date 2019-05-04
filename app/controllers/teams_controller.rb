@@ -6,4 +6,7 @@ class TeamsController < ApplicationController
       @teams = Team.all
     end
   end
+
+  def new
+  end
 end
