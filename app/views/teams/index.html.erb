@@ -11,7 +11,7 @@
 <section id="team_stats">
   <h2>Statistics:</h2>
   <p>Average Age: <%= @average_age %></p>
-  <p>All Team Locations: <%= @team_locations %></p>
+  <p>All Team Locations: <%= @team_locations.join(', ') %></p>
 </section>
 
 <% @teams.each do |team| %>
