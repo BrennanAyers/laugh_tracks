@@ -2,6 +2,8 @@ class TeamsController < ApplicationController
   def index
     if params.include?(:age)
       @teams = Team.by_age(params[:age])
+      @average_age = @teams.average_age
+      @team_locations = @teams.locations
     else
       @teams = Team.all
       @average_age = Team.average_age
