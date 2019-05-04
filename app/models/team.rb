@@ -10,4 +10,12 @@ class Team < ApplicationRecord
   def player_count
     players.count
   end
+
+  def self.average_age
+    average(:age)
+  end
+
+  def self.locations
+    select(:location).distinct.pluck(:location)
+  end
 end
