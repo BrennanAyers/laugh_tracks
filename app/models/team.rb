@@ -6,4 +6,8 @@ class Team < ApplicationRecord
   def self.by_age(age)
     where(age: age).all
   end
+
+  def player_count
+    players.count
+  end
 end
