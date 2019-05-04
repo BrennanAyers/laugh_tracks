@@ -132,4 +132,10 @@ RSpec.describe 'teams index page', type: :feature do
 
     expect(page).to have_content("Sorry, nothing for you here!")
   end
+
+  it 'has a link to that teams show page' do
+    click_link "#{@team_1.name}"
+
+    expect(current_path).to eq("/teams/#{@team_1.id}")
+  end
 end
