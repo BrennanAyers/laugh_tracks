@@ -8,6 +8,12 @@
   <%= submit_tag("Search", name: nil) %>
 <% end %>
 
+<section id="team_stats">
+  <h2>Statistics:</h2>
+  <p>Average Age: <%= @average_age %></p>
+  <p>All Team Locations: <%= @team_locations %></p>
+</section>
+
 <% @teams.each do |team| %>
   <section class="team" id="team_<%= team.id %>">
     <h2><%= team.name %></h2>
