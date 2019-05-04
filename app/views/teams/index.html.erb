@@ -1,5 +1,7 @@
 <h1>All Teams</h1>
 
+<a href="/teams/new" id="new_team_link">New Team</a>
+
 <%= form_tag("/teams", method: "get", enforce_utf8: false) do %>
   <%= label_tag(:age, "Teams by Age:") %>
   <%= text_field_tag(:age) %>

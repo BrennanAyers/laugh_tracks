@@ -94,12 +94,18 @@ RSpec.describe 'teams index page', type: :feature do
     player2 = @team_1.players.create(name: "Placeholder 2", winrate: 0.5)
 
     visit "/teams"
-    
+
     within "#team_#{@team_1.id}" do
       expect(page).to have_content("Player Count: #{@team_1.player_count}")
     end
     within "#team_#{@team_2.id}" do
       expect(page).to have_content("Player Count: #{@team_2.player_count}")
     end
+  end
+
+  it 'has a link to create a new team' do
+    click_link "New Team"
+
+    expect(current_path).to eq("/teams/new")
   end
 end

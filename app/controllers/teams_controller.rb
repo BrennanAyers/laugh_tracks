@@ -6,4 +6,19 @@ class TeamsController < ApplicationController
       @teams = Team.all
     end
   end
+
+  def new
+    @new_team = Team.new
+  end
+
+  def create
+    Team.create(team_params)
+    redirect_to "/teams"
+  end
+
+  private
+
+  def team_params
+    params.require(:team).permit(:name, :age, :location)
+  end
 end
