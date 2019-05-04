@@ -111,7 +111,7 @@ RSpec.describe 'teams index page', type: :feature do
 
   it 'displays the statistics of the teams' do
     expect(page).to have_content("Statistics:")
-    expect(page).to have_content("Average Age: 6")
-    expect(page).to have_content("All Team Locations: Europe, Ukraine")
+    expect(page).to have_content("Average Age: #{(@team_1.age + @team_2.age) / 2}")
+    expect(page).to have_content("All Team Locations: #{@team_2.location}, #{@team_1.location}")
   end
 end
