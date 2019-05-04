@@ -18,7 +18,7 @@ RSpec.describe Team, type: :model do
     end
 
     it "should only return teams by age" do
-      expect(Team.by_age(4)).to eq(@team_1)
+      expect(Team.by_age(4)).to eq([@team_1])
     end
   end
 end
