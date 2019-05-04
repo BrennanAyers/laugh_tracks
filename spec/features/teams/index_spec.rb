@@ -108,4 +108,10 @@ RSpec.describe 'teams index page', type: :feature do
 
     expect(current_path).to eq("/teams/new")
   end
+
+  it 'displays the statistics of the teams' do
+    expect(page).to have_content("Statistics:")
+    expect(page).to have_content("Average Age: 6")
+    expect(page).to have_content("All Team Locations: Europe, Ukraine")
+  end
 end
