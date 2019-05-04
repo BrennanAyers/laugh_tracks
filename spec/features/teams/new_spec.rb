@@ -6,16 +6,15 @@ RSpec.describe 'New Team', type: :feature do
       it "can create a new Team" do
         visit "/teams/new"
 
-        fill_in "name", with: "Test"
-        fill_in "age", with: 1
-        fill_in "location", with: "Test"
-        click_button "Submit"
+        fill_in "Name", with: "Test"
+        fill_in "Age", with: 1
+        fill_in "Location", with: "Test"
+        click_button "Create Team"
 
         new_team = Team.last
 
         expect(current_path).to eq("/teams")
-
-        within("team_#{new_team.id}") do
+        within("#team_#{new_team.id}") do
           expect(page).to have_content(new_team.name)
           expect(page).to have_content("Age: #{new_team.age}")
           expect(page).to have_content("Location: #{new_team.location}")
