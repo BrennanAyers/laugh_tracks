@@ -1,5 +1,11 @@
 <h1>All Teams</h1>
 
+<%= form_tag("/teams", method: "get", enforce_utf8: false) do %>
+  <%= label_tag(:age, "Teams by Age:") %>
+  <%= text_field_tag(:age) %>
+  <%= submit_tag("Search", name: nil) %>
+<% end %>
+
 <% @teams.each do |team| %>
   <section class="team" id="team_<%= team.id %>">
     <h2><%= team.name %></h2>

@@ -73,4 +73,19 @@ RSpec.describe 'teams index page', type: :feature do
       expect(page).to have_css("img[alt='#{player.name} Photo']")
     end
   end
+
+  it 'only displays teams with the queried age' do
+    # visit "/teams?age=#{@team_1.age}
+
+    fill_in "age", with: "#{@team_1.age}"
+    click_button "Search"
+
+    expect(page).to have_content(@team_1.name)
+    expect(page).to have_content("Age: #{@team_1.age}")
+    expect(page).to have_content("Location: #{@team_1.location}")
+
+    expect(page).to_not have_content(@team_2.name)
+    expect(page).to_not have_content("Age: #{@team_2.age}")
+    expect(page).to_not have_content("Location: #{@team_2.location}")
+  end
 end
