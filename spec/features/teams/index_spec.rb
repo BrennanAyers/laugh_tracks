@@ -75,7 +75,10 @@ RSpec.describe 'teams index page', type: :feature do
   end
 
   it 'only displays teams with the queried age' do
-    visit "/teams?age=#{@team_1.age}"
+    # visit "/teams?age=#{@team_1.age}
+
+    fill_in "age", with: "#{@team_1.age}"
+    click_button "Search"
 
     expect(page).to have_content(@team_1.name)
     expect(page).to have_content("Age: #{@team_1.age}")
