@@ -4,6 +4,8 @@ class TeamsController < ApplicationController
       @teams = Team.by_age(params[:age])
     else
       @teams = Team.all
+      @average_age = Team.average_age
+      @team_locations = Team.locations
     end
   end
 
