@@ -28,7 +28,7 @@ RSpec.describe Team, type: :model do
     it 'should return all unique team locations' do
       Team.create(name: "Not So Secret", age: 6, location: "Europe")
 
-      expect(Team.locations).to eq(["Europe", "Ukraine"])
+      expect(Team.locations).to eq(["Ukraine", "Europe"])
     end
   end
 
