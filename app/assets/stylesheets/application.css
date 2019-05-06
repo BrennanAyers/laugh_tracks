@@ -14,6 +14,9 @@
  *= require_self
  */
 
+body {
+  background-color: #9A3527;
+}
 img {
   width: 200px;
 }
@@ -29,4 +32,9 @@ header {
 #team_stats {
   margin-top: 16px;
   float: right;
+}
+
+header form {
+  margin-left: 16px;
+  display: inline;
 }
