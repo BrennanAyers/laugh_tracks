@@ -27,23 +27,33 @@
 
 <% @teams.each do |team| %>
   <section class="team" id="team_<%= team.id %>">
-    <h2><a href="/teams/<%= team.id %>"><%= team.name %></a></h2>
-    <img src="<%= team.image %>" alt="<%= team.name %> Logo">
-    <p>Age: <%= team.age %></p>
-    <p>Location: <%= team.location %></p>
-    <p>Player Count: <%= team.player_count %></p>
-    <aside class="player" id="team_<%= team.id %>_players">
-      <div class="card-group">
-    <% team.players.each do |player| %>
-        <div class="card">
-          <img src="<%= player.image %>" alt="<%= player.name %> Photo" class="card-img-top">
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="<%= team.image %>" alt="<%= team.name %> Logo" class="card-img">
+        </div>
+        <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Name: <%= player.name %></h5>
-            <p class="card-text">Winrate: <%= player.winrate %></p>
+            <h5 class="card-title"><a href="/teams/<%= team.id %>"><%= team.name %></a></h5>
+            <p class="card-text">Age: <%= team.age %></p>
+            <p class="card-text">Location: <%= team.location %></p>
+            <p class="card-text">Player Count: <%= team.player_count %></p>
           </div>
         </div>
-        <% end %>
       </div>
-    </aside>
+    </div>
   </section>
+  <aside class="player" id="team_<%= team.id %>_players">
+    <div class="card-group">
+  <% team.players.each do |player| %>
+      <div class="card">
+        <img src="<%= player.image %>" alt="<%= player.name %> Photo" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Name: <%= player.name %></h5>
+          <p class="card-text">Winrate: <%= player.winrate %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </aside>
 <% end %>
