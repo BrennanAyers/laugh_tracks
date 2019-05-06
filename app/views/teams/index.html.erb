@@ -45,18 +45,18 @@
         </div>
       </div>
     </div>
-  </section>
-  <aside class="player" id="team_<%= team.id %>_players">
-    <div class="card-group">
-  <% team.players.each do |player| %>
-      <div class="card">
-        <img src="<%= player.image %>" alt="<%= player.name %> Photo" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">Name: <%= player.name %></h5>
-          <p class="card-text">Winrate: <%= player.winrate %></p>
+    <aside class="player" id="team_<%= team.id %>_players">
+      <div class="card-group">
+        <% team.players.each do |player| %>
+        <div class="card" id="player_<%= player.id %>">
+          <img src="<%= player.image %>" alt="<%= player.name %> Photo" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Name: <%= player.name %></h5>
+            <p class="card-text">Winrate: <%= player.winrate %></p>
+          </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
-    </div>
-  </aside>
+    </aside>
+  </section>
 <% end %>
