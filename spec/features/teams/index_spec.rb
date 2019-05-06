@@ -146,4 +146,14 @@ RSpec.describe 'teams index page', type: :feature do
     expect(page).to have_content("Total Players: #{(@team_1.players.count + @team_2.players.count)}")
     expect(page).to have_content("Average Player Winrate: #{expected_average}")
   end
+
+  it 'displays player statistics for filtered teams' do
+    visit '/teams?age=4'
+
+    expected_average = @team_1.players.sum(:winrate) / @team_1.players.count
+
+    expect(page).to have_content("Statistics:")
+    expect(page).to have_content("Total Players: #{@team_1.players.count}")
+    expect(page).to have_content("Average Player Winrate: #{expected_average}")
+  end
 end
