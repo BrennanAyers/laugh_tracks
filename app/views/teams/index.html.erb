@@ -1,37 +1,62 @@
-<h1>All Teams</h1>
+<header>
+  <h1>All Teams</h1>
 
-<a href="/teams/new" id="new_team_link">New Team</a>
+  <a class="btn btn-success" href="/teams/new" id="new_team_button" role="button">New Team</a>
 
-<%= form_tag("/teams", method: "get", enforce_utf8: false) do %>
+  <%= form_tag("/teams", method: "get", enforce_utf8: false) do %>
   <%= label_tag(:age, "Teams by Age:") %>
   <%= text_field_tag(:age) %>
   <%= submit_tag("Search", name: nil) %>
-<% end %>
+  <% end %>
+</header>
+
 <% if @teams.empty? %>
   <p>Sorry, nothing for you here!</p>
 <% else %>
   <section id="team_stats">
-    <h2>Statistics:</h2>
-    <p>Average Age: <%= @average_age.round(2) %></p>
-    <p>All Team Locations: <%= @team_locations.join(', ') %></p>
-    <p>Total Players: <%= @total_player_count %></p>
-    <p>Average Player Winrate: <%= @average_player_winrate %></p>
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Statistics:
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Average Age: <%= @average_age.round(2) %></li>
+        <li class="list-group-item">All Team Locations: <%= @team_locations.join(', ') %></li>
+        <li class="list-group-item">Total Players: <%= @total_player_count %></li>
+        <li class="list-group-item">Average Player Winrate: <%= @average_player_winrate %></li>
+      </ul>
+    </div>
   </section>
 <% end %>
 
 <% @teams.each do |team| %>
   <section class="team" id="team_<%= team.id %>">
-    <h2><a href="/teams/<%= team.id %>"><%= team.name %></a></h2>
-    <img src="<%= team.image %>" alt="<%= team.name %> Logo">
-    <p>Age: <%= team.age %></p>
-    <p>Location: <%= team.location %></p>
-    <p>Player Count: <%= team.player_count %></p>
-    <% team.players.each do |player| %>
-    <aside class="player" id="player_<%= player.id %>">
-      <img src="<%= player.image %>" alt="<%= player.name %> Photo">
-      <p>Name: <%= player.name %></p>
-      <p>Winrate: <%= player.winrate %></p>
+    <div class="card text-white bg-secondary mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="<%= team.image %>" alt="<%= team.name %> Logo" class="card-img">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><a href="/teams/<%= team.id %>"><%= team.name %></a></h5>
+            <p class="card-text">Age: <%= team.age %></p>
+            <p class="card-text">Location: <%= team.location %></p>
+            <p class="card-text">Player Count: <%= team.player_count %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="player" id="team_<%= team.id %>_players">
+      <div class="card-group">
+        <% team.players.each do |player| %>
+        <div class="card" id="player_<%= player.id %>">
+          <img src="<%= player.image %>" alt="<%= player.name %> Photo" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Name: <%= player.name %></h5>
+            <p class="card-text">Winrate: <%= player.winrate %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </aside>
-    <% end %>
   </section>
 <% end %>
