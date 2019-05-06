@@ -21,3 +21,12 @@ img {
 .team {
   margin-top: 16px;
 }
+
+header {
+  display: inline-block;
+}
+
+#team_stats {
+  margin-top: 16px;
+  float: right;
+}
