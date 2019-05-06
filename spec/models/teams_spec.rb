@@ -36,7 +36,7 @@ RSpec.describe Team, type: :model do
       @team_1.players.create!(name: "MidOne", winrate: 0.681, image: "https://www.opendota.com/assets/images/dota2/players/116585378.png")
       @team_2.players.create!(name: "Chu", winrate: 0.521, image: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7c/7c590378e43123beebb838e2987eb6773febe1a6_full.jpg")
 
-      expect (Team.total_player_count).to eq(3)
+      expect(Team.total_player_count).to eq(3)
     end
 
     it 'should return the average player winrate of all teams' do
@@ -44,7 +44,7 @@ RSpec.describe Team, type: :model do
       @team_1.players.create!(name: "MidOne", winrate: 0.681, image: "https://www.opendota.com/assets/images/dota2/players/116585378.png")
       @team_2.players.create!(name: "Chu", winrate: 0.521, image: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7c/7c590378e43123beebb838e2987eb6773febe1a6_full.jpg")
 
-      expect(Team.average_player_winrate).to eq(0.623)
+      expect(Team.average_player_winrate).to eq(0.622666666666667e0)
     end
   end
 
